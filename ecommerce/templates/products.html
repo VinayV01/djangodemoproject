@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <img src="{{cat.image.url}}" height="300px" width="100%">
+
+</div>
+
+<div class="container w-50 mx-auto mt-5">
+    <h1 class="text-center" style="font-size:40px;">Our Products</h1>
+</div>
+  <div class="container">
+                <div class="row karl-new-arrivals">
+
+                    {% for i in pro %}
+
+                    <!-- Single gallery Item Start -->
+                    <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <img src="{{i.image.url}}" alt="Product Image" style="width: 100%; height: 300px;">
+
+                            <div class="product-quicview">
+                                <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                            </div>
+                        </div>
+                        <!-- Product Description -->
+                        <div class="product-description">
+                            <h3 class="product-price">{{i.name}}</h3>
+                            <h4 class="product-price">₹ {{i.price}}</h4>
+                            <p class="available">Available: <span class="text-muted">In Stock</span></p>
+<!--                        <p>{{i.price}}</p>-->
+                            <!-- Add to Cart -->
+                            <a href="{% url 'shop:detail' i.id %}" class="add-to-cart-btn">Details</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+  </div>
+
+{% endblock %}
